@@ -1,0 +1,22 @@
+def calculate_calibration_sum(filename):
+    total_sum = 0
+
+    with open(filename, 'r') as file:
+        for line in file:
+            # Extract digits from the line
+            digits = [char for char in line if char.isdigit()]
+
+            if digits:
+                # Combine first and last digit to form a two-digit number
+                if len(digits) == 1:  # If only one digit is present
+                    value = int(digits[0] * 2)
+                else:
+                    value = int(digits[0] + digits[-1])
+
+                total_sum += value
+
+    return total_sum
+
+# Example usage
+filename = 'input.txt'  # Replace with the actual file name
+print(calculate_calibration_sum(filename))
